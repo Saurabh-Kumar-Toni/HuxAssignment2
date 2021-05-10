@@ -27,8 +27,10 @@ public class MovieDBController {
 		long startTime = System.currentTimeMillis();
 		if(flag.equals("db"))
 			movieService.saveMovieindb(movie);
-		if(flag.equals("csv"))
+		if(flag.equals("csv")){
 			writetocsv.writeToCSVfromRequestBody(movie);
+			movieService.saveMovieindb(movie);
+		}
 		
 		long endTime = System.currentTimeMillis();
 		System.out.println("Time taken in milliseconds is : " + (endTime-startTime) + "ms");
