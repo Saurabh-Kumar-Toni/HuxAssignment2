@@ -32,7 +32,9 @@ public class MovieController {
 		List<Movie> result = new ArrayList<>();
 		result = filterMovieData.filterByTypeTvShow(count);
 		long endTime = System.currentTimeMillis();
-		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"mS");
+	    
+	    	//Adding the execution time in header
+		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"ms");
         
         return result;
     }
@@ -44,8 +46,10 @@ public class MovieController {
 		List<Movie> result = new ArrayList<>();
 		result = filterMovieData.findListedHorrorMovie(movieType);
 		long endTime = System.currentTimeMillis();
-		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"mS");
-        return result;
+		
+	    //Adding the execution time in header
+	    response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"ms");
+           return result;
     }
 	
 	@GetMapping(value = "/tvshows", params = "country")
@@ -55,7 +59,9 @@ public class MovieController {
 		List<Movie> result = new ArrayList<>();
 		result = filterMovieData.filterIndianMovie(country);
 		long endTime = System.currentTimeMillis();
-		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"mS");
+	    
+	    	//Adding the execution time in header
+		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"ms");
         return result;
         
     }
@@ -67,7 +73,9 @@ public class MovieController {
 		List<Movie> result = new ArrayList<>();
 		result = filterMovieData.filterMovie(startDate,endDate);
 		long endTime = System.currentTimeMillis();
-		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"mS");
+	    	
+	    	//Adding the execution time in header
+		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"ms");
         return result;
     }
 	
