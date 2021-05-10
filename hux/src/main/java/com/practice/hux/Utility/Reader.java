@@ -15,6 +15,7 @@ import com.practice.hux.Entity.Movie;
 
 public class Reader {
 
+	//utility function to parse and read the csv
 	public static List<Movie> ParseCSVandRead() throws FileNotFoundException, IOException, ParseException {
         String fileToParse = "G:\\Hashers\\Milestone_1\\Assignment_2\\hux\\hux\\src\\main\\resources\\static\\netflix_titles.csv";
         BufferedReader fileReader = null;
