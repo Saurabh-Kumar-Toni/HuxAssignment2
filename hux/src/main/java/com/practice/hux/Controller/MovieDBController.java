@@ -2,6 +2,8 @@ package com.practice.hux.Controller;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,18 +24,17 @@ public class MovieDBController {
 	private WriteToCSV writetocsv;
 	
 	@PostMapping(value = "/tvshows", params = "flag" )
-	public void addMovie(@RequestBody Movie movie, @RequestParam String flag) throws IOException
+	public void addMovie(@RequestBody Movie movie, @RequestParam String flag, HttpServletResponse response) throws IOException
 	{
 		long startTime = System.currentTimeMillis();
 		if(flag.equals("db"))
 			movieService.saveMovieindb(movie);
-		if(flag.equals("csv")){
+		if(flag.equals("csv")) {
 			writetocsv.writeToCSVfromRequestBody(movie);
 			movieService.saveMovieindb(movie);
 		}
-		
 		long endTime = System.currentTimeMillis();
-		System.out.println("Time taken in milliseconds is : " + (endTime-startTime) + "ms");
+		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"mS");
 			
 	}
 	
