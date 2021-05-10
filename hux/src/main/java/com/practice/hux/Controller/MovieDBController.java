@@ -34,7 +34,9 @@ public class MovieDBController {
 			movieService.saveMovieindb(movie);
 		}
 		long endTime = System.currentTimeMillis();
-		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"mS");
+		
+		//Adding the execution time in header
+		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"ms");
 			
 	}
 	
