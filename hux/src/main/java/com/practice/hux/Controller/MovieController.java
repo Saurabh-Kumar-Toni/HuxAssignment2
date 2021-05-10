@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,31 +26,49 @@ public class MovieController {
 	private static FilterMovieData filterMovieData;
 	
 	@GetMapping(value = "/tvshows", params = "count")
-    public static List<Movie> getnTVShow(@RequestParam int count) throws FileNotFoundException, IOException, ParseException
+    public static List<Movie> getnTVShow(@RequestParam int count, HttpServletResponse response) throws FileNotFoundException, IOException, ParseException
     {
-		
-        return filterMovieData.filterByTypeTvShow(count);
+		long startTime = System.currentTimeMillis();
+		List<Movie> result = new ArrayList<>();
+		result = filterMovieData.filterByTypeTvShow(count);
+		long endTime = System.currentTimeMillis();
+		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"mS");
+        
+        return result;
     }
 	
 	@GetMapping(value = "/tvshows", params = "movieType")
-    public static List<Movie> getHorrorMovie(@RequestParam String movieType) throws FileNotFoundException, IOException, ParseException
+    public static List<Movie> getHorrorMovie(@RequestParam String movieType, HttpServletResponse response) throws FileNotFoundException, IOException, ParseException
     {
- 
-        return filterMovieData.findListedHorrorMovie(movieType);
+		long startTime = System.currentTimeMillis();
+		List<Movie> result = new ArrayList<>();
+		result = filterMovieData.findListedHorrorMovie(movieType);
+		long endTime = System.currentTimeMillis();
+		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"mS");
+        return result;
     }
 	
 	@GetMapping(value = "/tvshows", params = "country")
-    public static List<Movie> getCountryBasedMovie(@RequestParam String country) throws FileNotFoundException, IOException, ParseException
+    public static List<Movie> getCountryBasedMovie(@RequestParam String country, HttpServletResponse response) throws FileNotFoundException, IOException, ParseException
     {
- 
-        return filterMovieData.filterIndianMovie(country);
+		long startTime = System.currentTimeMillis();
+		List<Movie> result = new ArrayList<>();
+		result = filterMovieData.filterIndianMovie(country);
+		long endTime = System.currentTimeMillis();
+		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"mS");
+        return result;
+        
     }
 	
 	@GetMapping(value = "/tvshows", params = {"startDate","endDate"})
-    public static List<Movie> getDateBasedMovie(@RequestParam Date startDate, Date endDate) throws FileNotFoundException, IOException, ParseException
+    public static List<Movie> getDateBasedMovie(@RequestParam Date startDate, Date endDate, HttpServletResponse response) throws FileNotFoundException, IOException, ParseException
     {
- 
-        return filterMovieData.filterMovie(startDate,endDate);
+		long startTime = System.currentTimeMillis();
+		List<Movie> result = new ArrayList<>();
+		result = filterMovieData.filterMovie(startDate,endDate);
+		long endTime = System.currentTimeMillis();
+		response.setHeader("X-TIME-TO-EXECUTE",(endTime-startTime)+"mS");
+        return result;
     }
 	
 	
