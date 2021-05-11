@@ -5,7 +5,9 @@ import com.practice.hux.Entity.Movie;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,8 +19,8 @@ public class WriteToCSV {
 	
 	public void writeToCSVfromRequestBody(Movie movie) throws IOException
 	{
-		String csvPath = "G:\\Hashers\\Milestone_1\\Assignment_2\\hux\\hux\\src\\main\\resources\\static\\netflix_titles.csv";
-		CSVWriter writer = new CSVWriter(new FileWriter(csvPath, true));
+		File file = ResourceUtils.getFile("classpath:netflix_titles.csv");;
+		CSVWriter writer = new CSVWriter(new FileWriter(file, true));
 		String[] values = new String[11];
 		values[0]=movie.getShow_id();
 		values[1]=movie.getType();
