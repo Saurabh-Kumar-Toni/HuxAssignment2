@@ -1,6 +1,7 @@
 package com.practice.hux.Utility;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,15 +10,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import org.springframework.util.ResourceUtils;
 
 import com.practice.hux.Entity.Movie;
 
 
 public class Reader {
 
-	//utility function to parse and read the csv
 	public static List<Movie> ParseCSVandRead() throws FileNotFoundException, IOException, ParseException {
-        String fileToParse = "G:\\Hashers\\Milestone_1\\Assignment_2\\hux\\hux\\src\\main\\resources\\static\\netflix_titles.csv";
+        File file = ResourceUtils.getFile("classpath:netflix_titles.csv");
         BufferedReader fileReader = null;
 
 
@@ -27,7 +28,7 @@ public class Reader {
 
 
         String line = "";
-        fileReader = new BufferedReader(new FileReader(fileToParse));
+        fileReader = new BufferedReader(new FileReader(file));
         int count = 0;
         //Read the file line by line
         while ((line = fileReader.readLine()) != null) {
