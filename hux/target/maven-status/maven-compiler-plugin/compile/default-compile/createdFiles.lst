@@ -1,0 +1,10 @@
+com\practice\hux\Controller\MovieDBController.class
+com\practice\hux\Services\WriteToCSV.class
+com\practice\hux\Entity\Movie.class
+com\practice\hux\HuxApplication.class
+com\practice\hux\Security\MovieAuthentication.class
+com\practice\hux\Services\FilterMovieData.class
+com\practice\hux\Services\MovieService.class
+com\practice\hux\Utility\Reader.class
+com\practice\hux\Repository\MovieRepository.class
+com\practice\hux\Controller\MovieController.class
