@@ -1,0 +1,7 @@
+stop_id,direction_id,stop_name,station_name,station_descriptive_name,station_id,order,red,blue,green
+30004,W,Harlem (Terminal arrival),Harlem/Lake,Harlem/Lake (Green Line),40020,0,FALSE,FALSE,TRUE
+30003,E,Harlem (63rd-bound),Harlem/Lake,Harlem/Lake (Green Line),40020,0,FALSE,FALSE,TRUE
+30263,E,Oak Park (63rd-bound),Oak Park,Oak Park (Green Line),41350,1,FALSE,FALSE,TRUE
+30264,W,Oak Park (Harlem-bound),Oak Park,Oak Park (Green Line),41350,1,FALSE,FALSE,TRUE
+30119,E,Ridgeland (63rd-bound),Ridgeland,Ridgeland (Green Line),40610,2,FALSE,FALSE,TRUE
+30120,W,Ridgeland (Harlem-bound),Ridgeland,Ridgeland (Green Line),40610,2,FALSE,FALSE,TRUE
